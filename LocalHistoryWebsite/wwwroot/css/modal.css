@@ -6,41 +6,6 @@
     background-color: rgba(151, 134, 106, 0.4);
 }
 
-/* Modal content */
-.modal-content {
-    border: none;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 15px 40px rgba(151, 134, 106, 0.4);
-    background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
-}
-
-/* Modal header */
-.modal-header {
-    background: linear-gradient(135deg, var(--warm-beige), var(--beige-dark));
-    color: var(--sage-dark);
-    border-bottom: 3px solid var(--sage-light);
-    padding: 2rem;
-    position: relative;
-}
-
-    .modal-header::before {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 2px;
-        background: linear-gradient(90deg, transparent, var(--sage-green), transparent);
-    }
-
-.modal-title {
-    font-weight: 700;
-    font-size: 1.5rem;
-    color: var(--sage-green);
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-    margin: 0;
-}
 
 /* Close button */
 .btn-close {
@@ -167,76 +132,6 @@
             box-shadow: 0 6px 15px rgba(151, 134, 106, 0.3);
         }
 
-/* Modal footer */
-.modal-footer {
-    background: linear-gradient(135deg, var(--beige-light), var(--warm-beige));
-    border-top: 2px solid var(--beige-dark);
-    padding: 1.5rem 2.5rem;
-    justify-content: space-between;
-    position: relative;
-}
-
-    .modal-footer::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 2px;
-        background: linear-gradient(90deg, transparent, var(--sage-green), transparent);
-    }
-
-    /* Modal buttons */
-    .modal-footer .btn {
-        padding: 0.75rem 2rem;
-        font-weight: 600;
-        border-radius: 10px;
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-    }
-
-        .modal-footer .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .modal-footer .btn:hover::before {
-            left: 100%;
-        }
-
-    .modal-footer .btn-primary {
-        background: linear-gradient(135deg, var(--sage-green), var(--sage-dark));
-        border: none;
-        color: #ffffff;
-        box-shadow: 0 4px 8px rgba(151, 134, 106, 0.3);
-    }
-
-        .modal-footer .btn-primary:hover {
-            background: linear-gradient(135deg, var(--sage-dark), var(--sage-green));
-            transform: translateY(-3px);
-            box-shadow: 0 6px 16px rgba(151, 134, 106, 0.4);
-        }
-
-    .modal-footer .btn-secondary {
-        background-color: var(--warm-beige);
-        border: 2px solid var(--beige-dark);
-        color: var(--sage-dark);
-    }
-
-        .modal-footer .btn-secondary:hover {
-            background-color: var(--beige-dark);
-            border-color: var(--sage-green);
-            color: var(--sage-green);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 16px rgba(151, 134, 106, 0.3);
-        }
 
 /* Create post button enhancement */
 #createPostBtn {
@@ -298,71 +193,47 @@
     opacity: 1;
 }
 
-/* Responsive design for modals */
-@media (max-width: 768px) {
-    .modal-lg {
-        max-width: 95%;
-        margin: 1rem auto;
+.delete-confirmation-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1055;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    outline: 0;
+}
+
+    .delete-confirmation-modal .modal-dialog {
+        transform: none !important;
+        transition: none !important;
     }
 
-    .modal-header {
-        padding: 1.5rem;
+    .delete-confirmation-modal .modal-content {
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        border: none;
+        border-radius: 15px;
     }
 
-    .modal-body {
-        padding: 1.5rem;
+    .delete-confirmation-modal .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+        font-weight: 500;
+        transition: all 0.2s ease;
     }
 
-    .modal-footer {
-        padding: 1rem 1.5rem;
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-        .modal-footer .btn {
-            width: 100%;
-            order: 1;
+        .delete-confirmation-modal .btn-danger:hover {
+            background-color: #c82333;
+            border-color: #bd2130;
+            transform: translateY(-1px);
         }
 
-        .modal-footer .btn-secondary {
-            order: 2;
-        }
-
-    #createPostBtn {
-        padding: 0.75rem 2rem;
-        font-size: 1.1rem;
+    .delete-confirmation-modal .btn-secondary {
+        font-weight: 500;
+        transition: all 0.2s ease;
     }
 
-    #imagePreviewContainer img {
-        height: 100px;
+    .delete-confirmation-modal .btn-close:focus {
+        box-shadow: none;
     }
-}
-
-/* Loading state for form submission */
-.modal-footer .btn:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
-    transform: none !important;
-}
-
-.modal-footer .btn.loading::after {
-    content: '';
-    display: inline-block;
-    width: 1rem;
-    height: 1rem;
-    border: 2px solid transparent;
-    border-top: 2px solid currentColor;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin-left: 0.5rem;
-}
-
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
-}
